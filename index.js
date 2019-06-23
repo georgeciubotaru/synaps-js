@@ -41,8 +41,7 @@ export default class SynapsClient {
 						_this.openWorkflow();
 					}
 				}
-			},
-			false,
+			}
 		);
 	}
 
@@ -51,39 +50,26 @@ export default class SynapsClient {
 		let embedElement = document.getElementById('synaps-kyc-embed');
 		if (embedElement !== null) {
 			this.isWorkflowOpen = true;
-			embeddedWorkflow.setAttribute(
-				'class',
-				'synaps-embedded-workflow-container',
-			);
+			embeddedWorkflow.setAttribute('class', 'synaps-embedded-workflow-container');
 			embedElement.appendChild(embeddedWorkflow);
 		}
 
 		var _this = this;
-		document.addEventListener(
-			'DOMNodeInserted',
-			function (event) {
-				var element = event.target;
-				if (element.tagName === 'DIV' && element.attributes.id) {
-					if (
-						element.attributes.id.value === 'synaps-kyc-embed' &&
-						_this.isWorkflowOpen === false
-					) {
-						let embeddedWorkflow = _this.getWorkflow();
-						let embedElement = document.getElementById('synaps-kyc-embed');
-						if (embedElement === null) {
-							return;
-						}
-						_this.isWorkflowOpen = true;
-						embeddedWorkflow.setAttribute(
-							'class',
-							'synaps-embedded-workflow-container',
-						);
-						embedElement.appendChild(embeddedWorkflow);
+		document.addEventListener('DOMNodeInserted', function (event) {
+			var element = event.target;
+			if (element.tagName === 'DIV' && element.attributes.id) {
+				if (element.attributes.id.value === 'synaps-kyc-embed' && _this.isWorkflowOpen === false) {
+					let embeddedWorkflow = _this.getWorkflow();
+					let embedElement = document.getElementById('synaps-kyc-embed');
+					if (embedElement === null) {
+						return;
 					}
+					_this.isWorkflowOpen = true;
+					embeddedWorkflow.setAttribute('class', 'synaps-embedded-workflow-container');
+					embedElement.appendChild(embeddedWorkflow);
 				}
-			},
-			false,
-		);
+			}
+		});
 	}
 
 	on(type, callback) {
@@ -142,8 +128,7 @@ export default class SynapsClient {
 						_this.userOnboardDeclinedCallback();
 					}
 				}
-			},
-			false,
+			}
 		);
 	}
 
@@ -164,19 +149,13 @@ export default class SynapsClient {
 		}
 		src = `${src}&type=${this.workflowType}`;
 		this.iframe.setAttribute('src', src);
-		this.iframe.setAttribute(
-			'allow',
-			'geolocation; microphone; camera; midi; encrypted-media;',
-		);
+		this.iframe.setAttribute('allow', 'microphone; camera; midi; encrypted-media;');
 		this.iframe.setAttribute('id', 'synaps-embed');
 		this.iframe.setAttribute('allowtransparency', 'true');
 		this.iframe.setAttribute('frameborder', 'none');
 		this.iframe.setAttribute('border', '0');
 		this.iframe.setAttribute('resize', 'none');
-		this.iframe.setAttribute(
-			'style',
-			'z-index: 99999999; overflow: hidden auto; visibility: visible; margin: 0px; padding: 0px; position: fixed; border-color: transparent; border-width: 0; border-style: none; left: 0px; top: 0px; width: 100%; height: 100%; -webkit-tap-highlight-color: transparent;',
-		);
+		this.iframe.setAttribute('style', 'z-index: 99999999; overflow: hidden auto; visibility: visible; margin: 0px; padding: 0px; position: fixed; border-color: transparent; border-width: 0; border-style: none; left: 0px; top: 0px; width: 100%; height: 100%; -webkit-tap-highlight-color: transparent;');
 		this.isWorkflowOpen = true;
 		document.body.appendChild(this.iframe);
 	}
@@ -188,10 +167,7 @@ export default class SynapsClient {
 		}
 		src = `${src}&type=${this.workflowType}`;
 		this.iframe.setAttribute('src', src);
-		this.iframe.setAttribute(
-			'allow',
-			'geolocation; microphone; camera; midi; encrypted-media;',
-		);
+		this.iframe.setAttribute('allow', 'microphone; camera; midi; encrypted-media;');
 		this.iframe.setAttribute('id', 'synaps-embed');
 		this.iframe.setAttribute('allowtransparency', 'true');
 		this.iframe.setAttribute('frameborder', 'none');
