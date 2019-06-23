@@ -1,0 +1,19 @@
+{
+  "name": "@synaps-id/synaps-js",
+  "version": "1.0.0",
+  "description": "Synaps.io Javascript SDK",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/synaps-id/synaps-js.git"
+  },
+  "author": "synaps",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/synaps-id/synaps-js/issues"
+  },
+  "homepage": "https://github.com/synaps-id/synaps-js#readme"
+}
