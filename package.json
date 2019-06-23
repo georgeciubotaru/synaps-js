@@ -1,6 +1,6 @@
 {
   "name": "@synaps-id/synaps-js",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Synaps.io Javascript SDK",
   "main": "index.js",
   "scripts": {
