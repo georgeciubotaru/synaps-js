@@ -45,31 +45,14 @@ export default class SynapsClient {
 		);
 	}
 
-	initEmbedded() {
+	initEmbedded(id) {
 		let embeddedWorkflow = this.getWorkflow();
-		let embedElement = document.getElementById('synaps-kyc-embed');
+		let embedElement = document.getElementById(id);
 		if (embedElement !== null) {
 			this.isWorkflowOpen = true;
 			embeddedWorkflow.setAttribute('class', 'synaps-embedded-workflow-container');
 			embedElement.appendChild(embeddedWorkflow);
 		}
-
-		var _this = this;
-		document.addEventListener('DOMNodeInserted', function (event) {
-			var element = event.target;
-			if (element.tagName === 'DIV' && element.attributes.id) {
-				if (element.attributes.id.value === 'synaps-kyc-embed' && _this.isWorkflowOpen === false) {
-					let embeddedWorkflow = _this.getWorkflow();
-					let embedElement = document.getElementById('synaps-kyc-embed');
-					if (embedElement === null) {
-						return;
-					}
-					_this.isWorkflowOpen = true;
-					embeddedWorkflow.setAttribute('class', 'synaps-embedded-workflow-container');
-					embedElement.appendChild(embeddedWorkflow);
-				}
-			}
-		});
 	}
 
 	on(type, callback) {
@@ -86,11 +69,12 @@ export default class SynapsClient {
 
 	init(options = {
 		email: '',
+		id: 'synaps-kyc-embed',
 	}) {
 		this.setupEvents();
 		this.email = options.email;
-		if (this.workflowType === 'embed') {
-			this.initEmbedded();
+		if (this.workflowType === 'embed' && options.id !== '') {
+			this.initEmbedded(options.id);
 		}
 
 		if (this.workflowType === 'modal') {
