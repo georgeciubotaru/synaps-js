@@ -2,9 +2,14 @@
   "name": "@synaps-id/synaps-js",
   "version": "1.1.1",
   "description": "Synaps.io Javascript SDK",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"No test specified\""
+    "test": "echo \"No test specified\"",
+    "compile": "babel index.js -d ./lib --presets=env"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.7.0"
   },
   "repository": {
     "type": "git",
